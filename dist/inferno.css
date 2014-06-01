@@ -1,836 +1,4 @@
-/*
- * Copyright (C) 2006, 2007, 2008 Apple Inc.  All rights reserved.
- * Copyright (C) 2009 Anthony Ricaud <rik@webkit.org>
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * 1.  Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- * 2.  Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- * 3.  Neither the name of Apple Computer, Inc. ("Apple") nor the names of
- *     its contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY APPLE AND ITS CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL APPLE OR ITS CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-.sidebar-pane > .body .breakpoint-condition {
-    display: block;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-left: 23px;
-    margin-right: 8px;
-}
-
-#breakpoint-condition-input {
-    display: block;
-    margin-left: 0;
-    margin-right: 0;
-    outline: none !important;
-    border: 1px solid rgb(66%, 66%, 66%);
-}
-
-ol.breakpoint-list {
-    -webkit-padding-start: 0;
-    list-style: none;
-    margin: 0;
-    padding-bottom: 3px;
-}
-
-.breakpoints-list-deactivated {
-    background-color: rgb(245, 245, 245);
-    opacity: 0.3;
-}
-
-.breakpoint-list li {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    padding: 2px 0;
-}
-
-.breakpoint-list li:hover {
-    background-color: rgba(56, 121, 217, 0.2);
-}
-
-.breakpoint-list .checkbox-elem {
-    font-size: 10px;
-    margin: 0 4px;
-    vertical-align: top;
-    position: relative;
-    z-index: 1;
-    top: 3px;
-}
-
-.breakpoint-list .source-text {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    margin: 2px 0 0 20px;
-}
-
-.sidebar-pane .breakpoint-hit {
-    background-color: rgb(255, 255, 194);
-}
-
-li.breakpoint-hit .breakpoint-hit-marker {
-    background-color: rgb(255, 255, 194);
-    height: 18px;
-    left: 0;
-    margin-top: -16px;
-    position: absolute;
-    right: 0;
-    z-index: -1;
-}
-
-.event-listener-breakpoints.properties-tree li {
-    height: 16px;
-    padding-top: 3px;
-}
-
-.event-listener-breakpoints.properties-tree .children li {
-    margin-left: 12px;
-    height: 16px;
-}
-
-.event-listener-breakpoints .checkbox-elem {
-    float: left;
-    position: relative;
-    top: 1px;
-    font-size: 10px;
-};.toolbar, .sidebar, .split-view-resizer, .profile-launcher-view-content {
-	display: none
-}
-.split-view-sidebar {
-	flex-basis: 0px!important;
-}
-#flamey {
-	width: 500px;
-	height: 500px;
-	margin: auto;
-	margin-top: 300px;
-};.data-grid {
-    position: relative;
-    border: 1px solid #aaa;
-    font-size: 11px;
-    line-height: 120%;
-}
-
-.data-grid .highlight {
-    background-color: rgb(255, 230, 179);
-}
-
-.data-grid tr.selected .highlight {
-    background-color: transparent;
-}
-
-.data-grid table {
-    table-layout: fixed;
-    border-spacing: 0;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.data-grid .data-container {
-    position: absolute;
-    top: 17px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow-x: hidden;
-    overflow-y: overlay;
-    -webkit-transform: translateZ(0);
-}
-
-.data-grid.inline {
-    border-left: none;
-}
-
-.data-grid.inline .data-container {
-    position: static;
-}
-
-.data-grid.inline th.corner,
-.data-grid.inline td.corner {
-    display: none;
-}
-
-.data-grid th {
-    text-align: left;
-    background-color: rgb(236, 236, 236);
-    border: 1px solid rgb(179, 179, 179);
-    border-top: none;
-    border-right: none;
-    height: 16px;
-    line-height: 16px;
-    font-weight: normal;
-    vertical-align: middle;
-    padding: 0 4px;
-    white-space: nowrap;
-}
-
-.data-grid th.corner,
-.data-grid td.corner,
-.data-grid col.corner {
-    width: 14px;
-    padding-right: 0;
-    padding-left: 0;
-    border-left: 0 none transparent !important;
-}
-
-.data-grid tr.filler {
-    display: table-row !important;
-    height: auto !important;
-}
-
-.data-grid tr.filler td {
-    height: auto !important;
-    padding: 0 !important;
-}
-
-.data-grid table.data {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    border-top: 0 none transparent;
-    background-image: linear-gradient(to bottom, white, white 50%, rgb(234, 243, 255) 50%, rgb(234, 243, 255));
-    background-size: 128px 32px;
-    table-layout: fixed;
-}
-
-.data-grid.inline table.data {
-    position: static;
-}
-
-.data-grid table.data tr {
-    display: none;
-}
-
-.data-grid table.data tr.revealed {
-    display: table-row;
-}
-
-.data-grid td {
-    vertical-align: top;
-    height: 16px; /* Keep in sync with .data-grid table.data @ background-size */
-    line-height: 14px;
-    padding: 1px 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    border-left: 1px solid #aaa;
-    -webkit-user-select: text;
-}
-
-.data-grid th:first-child,
-.data-grid td:first-child {
-    border-left: none !important;
-}
-
-.data-grid td > div,
-.data-grid th > div {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.data-grid td.editing > div {
-    text-overflow: clip;
-}
-
-.data-grid .center div {
-    text-align: center;
-}
-
-.data-grid .right div {
-    text-align: right;
-}
-
-.data-grid th.sortable div {
-    position: relative;
-}
-
-.data-grid th.sortable:active {
-    background-color: rgba(0, 0, 0, 0.15);
-}
-
-.data-grid th.sort-ascending > div::after,
-.data-grid th.sort-descending > div::after {
-    position: absolute;
-    top: 1px;
-    right: 0;
-    background-size: 320px 144px;
-    opacity: 0.5;
-    width: 8px;
-    height: 10px;
-    content: "a";
-    color: transparent;
-}
-
-@media (-webkit-min-device-pixel-ratio: 1.5) {
-.data-grid th.sort-ascending > div::after,
-.data-grid th.sort-descending > div::after {
-    background-image: url(Images/statusbarButtonGlyphs_2x.png);
-}
-} /* media */
-
-.data-grid th.sort-ascending > div::after {
-    background-position: -4px -108px;
-}
-
-.data-grid th.sort-descending > div::after {
-    background-position: -20px -96px;
-}
-
-.data-grid th:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.data-grid button {
-    line-height: 18px;
-    color: inherit;
-}
-
-.data-grid tr.parent td.disclosure::before {
-    -webkit-user-select: none;
-    -webkit-mask-size: 320px 144px;
-    float: left;
-    width: 8px;
-    margin-right: 2px;
-    content: "a";
-    color: transparent;
-    position: relative;
-    top: 1px;
-}
-
-.data-grid tr.parent td.disclosure::before {
-    background-color: rgb(110, 110, 110);
-    -webkit-mask-position: -4px -96px;
-}
-
-@media (-webkit-min-device-pixel-ratio: 1.5) {
-.data-grid tr.parent td.disclosure::before {
-    -webkit-mask-image: url(Images/statusbarButtonGlyphs_2x.png);
-}
-} /* media */
-
-.data-grid tr.expanded td.disclosure::before {
-    -webkit-mask-position: -20px -96px;
-}
-
-.data-grid tr.selected {
-    background-color: rgb(212, 212, 212);
-    color: inherit;
-}
-
-.data-grid:focus tr.selected {
-    background-color: rgb(56, 121, 217);
-    color: white;
-}
-
-.data-grid:focus tr.selected a {
-    color: white;
-}
-
-.data-grid:focus tr.parent.selected td.disclosure::before {
-    background-color: white;
-    -webkit-mask-position: -4px -96px;
-}
-
-.data-grid:focus tr.expanded.selected td.disclosure::before {
-    background-color: white;
-    -webkit-mask-position: -20px -96px;
-}
-
-.data-grid tr:not(.parent) td.disclosure {
-    text-indent: 10px;
-}
-
-.data-grid-resizer {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 5px;
-    z-index: 500;
-};/*
- * Copyright (C) 2013 Google Inc. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are
- * met:
- *
- *     * Redistributions of source code must retain the above copyright
- * notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above
- * copyright notice, this list of conditions and the following disclaimer
- * in the documentation and/or other materials provided with the
- * distribution.
- *     * Neither the name of Google Inc. nor the names of its
- * contributors may be used to endorse or promote products derived from
- * this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-.filter-text-filter {
-    display: flex;
-    margin-left: 2px;
-    margin-right: 2px;
-    flex: 0 1 120px;
-    min-width: 40px;
-}
-
-.filter-text-filter.supports-regex {
-    flex: 0 0 155px;
-}
-
-.filter-text-filter label {
-    margin: auto 0;
-}
-
-.filter-bitset-filter {
-    padding: 0 10px !important;
-    overflow: hidden;
-    display: flex !important;
-}
-
-.filter-bitset-filter li {
-    display: inline-block;
-    margin: auto 2px;
-    padding: 4px 6px 3px 6px;
-    background: transparent;
-    text-shadow: rgba(255, 255, 255, 0.5) 0 1px 0;
-    border-radius: 8px;
-}
-
-.filter-bitset-filter-divider {
-    background-color: #ccc;
-    height: 16px;
-    width: 1px;
-    margin: auto 2px;
-    display: inline-block;
-}
-
-.filter-bitset-filter li.selected,
-.filter-bitset-filter li:hover,
-.filter-bitset-filter li:active {
-    color: white;
-    text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
-}
-
-.filter-bitset-filter li:hover {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.filter-bitset-filter li.selected {
-    background: rgba(0, 0, 0, 0.3);
-}
-
-.filter-bitset-filter li:active {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.filter-combobox-filter {
-    margin-left: 5px;
-    margin-right: 2px;
-    flex: 0 0 auto;
-}
-
-.filter-checkbox-filter {
-    padding-left: 4px;
-    padding-right: 2px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: flex;
-}
-
-.filter-checkbox-filter > label {
-    display: flex;
-    margin: auto 0;
-}
-
-.filter-text-invalid {
-    background-color: rgb(255, 200, 200);
-}
-
-.filter-checkbox-filter .checkbox-filter-checkbox {
-    width: 10px;
-    height: 10px;
-    margin: auto 3px;
-    padding: 0;
-    border-radius: 2px;
-    border: solid 1px;
-    display: inline-block;
-    overflow: visible;
-    opacity: 0.8;
-    flex-shrink: 0;
-}
-
-
-.filter-checkbox-filter .checkbox-filter-checkbox-check {
-    -webkit-appearance: none;
-    width: 11px;
-    height: 11px;
-    margin-top: -2px;
-    margin-left: 1px;
-}
-
-.filter-checkbox-filter .checkbox-filter-checkbox-checked {
-    background-size: 320px 144px;
-    background-position: -129px -110px;
-}
-
-.filters-toggle > .glyph {
-    -webkit-mask-position: -32px -48px;
-}
-
-.filters-toggle.toggled-shown .glyph {
-    background-color: rgb(66, 129, 235);
-}
-
-.filters-toggle.toggled-active .glyph {
-    background-color: rgb(216, 0, 0);
-};.overview-container {
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 80px;
-}
-
-.chart-container {
-    flex: auto;
-}
-
-#flame-chart-overview-grid .resources-dividers-label-bar {
-    pointer-events: auto;
-}
-
-.flame-chart-main-pane {
-    overflow: hidden;
-}
-
-.flame-chart-overview-pane {
-    flex: 0 0 80px !important;
-}
-
-#flame-chart-overview-container {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.flame-chart-overview-canvas {
-    position: absolute;
-    top: 20px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.chart-container .entry-info {
-    position: absolute;
-    left: 10px;
-    top: 25px;
-    background-color: rgba(255, 255, 255, 0.8);
-    pointer-events: none;
-}
-
-.chart-container .entry-info .title {
-    font-weight: bold;
-}
-
-.flame-chart-highlight-element {
-    background-color: black;
-    position: absolute;
-    opacity: 0.2;
-    pointer-events: none;
-}
-
-.flame-chart-selected-element {
-    position: absolute;
-    pointer-events: none;
-    border-color: rgb(56, 121, 217);
-    border-width: 2px;
-    border-style: solid;
-    background-color: rgba(56, 121, 217, 0.2);
-}
-
-.flame-chart-v-scroll {
-    flex: 0 0 15px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-};/*
- * Copyright (C) 2009 Google Inc. All rights reserved.
- * Copyright (C) 2010 Apple Inc. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are
- * met:
- *
- *     * Redistributions of source code must retain the above copyright
- * notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above
- * copyright notice, this list of conditions and the following disclaimer
- * in the documentation and/or other materials provided with the
- * distribution.
- *     * Neither the name of Google Inc. nor the names of its
- * contributors may be used to endorse or promote products derived from
- * this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-.heap-snapshot-sidebar-tree-item .icon {
-    content: url(Images/profileIcon.png);
-}
-
-.heap-snapshot-sidebar-tree-item.small .icon {
-    content: url(Images/profileSmallIcon.png);
-}
-
-.heap-snapshot-view {
-    display: none;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.heap-snapshot-view .pie-chart {
-    margin: 12px 30px;
-}
-
-.heap-snapshot-view .data-grid {
-    border: none;
-}
-
-.heap-snapshot-view .data-grid tr:empty {
-    height: 16px;
-    visibility: hidden;
-}
-
-.heap-snapshot-view .data-grid tr.selected span {
-    color: inherit;
-}
-
-.heap-snapshot-view .data-grid td.count-column {
-    text-align: right;
-}
-
-.heap-snapshot-view .data-grid td.addedCount-column {
-    text-align: right;
-}
-
-.heap-snapshot-view .data-grid td.removedCount-column {
-    text-align: right;
-}
-
-.heap-snapshot-view .data-grid td.countDelta-column {
-    text-align: right;
-}
-
-.heap-snapshot-view .data-grid td.addedSize-column {
-    text-align: right;
-}
-
-.heap-snapshot-view .data-grid td.removedSize-column {
-    text-align: right;
-}
-
-.heap-snapshot-view .data-grid td.sizeDelta-column {
-    text-align: right;
-}
-
-.heap-snapshot-view .data-grid td.shallowSize-column {
-    text-align: right;
-}
-
-.heap-snapshot-view .data-grid td.retainedSize-column {
-    text-align: right;
-}
-
-.heap-snapshot-view .data-grid td.distanceToWindow-column {
-    text-align: right;
-}
-
-.heap-snapshot-view .data-grid div.heap-snapshot-multiple-values {
-    float: right;
-}
-
-.heap-snapshot-view .data-grid span.percent-column {
-    color: #999;
-    width: 32px;
-    display: inline-block;
-}
-
-.heap-snapshot-view .console-formatted-object,
-.console-formatted-node {
-    display: inline;
-    position: static;
-}
-
-.detached-dom-tree-node {
-    background-color: #FF9999;
-}
-
-.heap-snapshot-view .console-formatted-string {
-    white-space: nowrap;
-}
-
-.heap-snapshot-view tr:not(.selected) .console-formatted-id {
-    color: grey;
-}
-
-.heap-snapshot-view .delimiter {
-    height: 24px;
-    background-color: #d6dde5;
-}
-
-.heap-snapshot-view .data-grid {
-    flex: auto;
-}
-
-.heap-snapshot-view .heap-tracking-overview {
-    flex: 0 0 80px;
-    height: 80px;
-}
-
-.heap-snapshot-view .retaining-paths-view {
-    overflow: hidden;
-}
-
-.heap-snapshot-view .retainers-view-header {
-    background-image: url(Images/statusbarResizerVertical.png);
-    background-color: rgb(236, 236, 236);
-    border-bottom: 1px solid rgb(179, 179, 179);
-    background-repeat: no-repeat;
-    background-position: right center, center;
-    flex: 0 0 21px;
-}
-
-.heap-snapshot-view .retainers-view-header .title > span {
-    display: inline-block;
-    padding-top: 3px;
-    vertical-align: middle;
-    margin-left: 4px;
-    margin-right: 8px;
-}
-
-.heap-snapshot-view .retainers-view-header * {
-    pointer-events: none;
-}
-
-.heap-snapshot-view tr:not(.selected) td.object-column span.highlight {
-    background-color: rgb(255, 255, 200);
-}
-
-.heap-snapshot-view td.object-column span.grayed {
-    color: gray;
-}
-
-table.heap-snapshot-help {
-    border-spacing: 12px 2px;
-}
-
-.cycled-ancessor-node {
-    opacity: 0.6;
-}
-
-#heap-recording-view .heap-snapshot-view {
-    top: 80px;
-}
-
-.overview-container {
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 80px;
-}
-
-#heap-recording-overview-grid .resources-dividers-label-bar {
-    pointer-events: auto;
-}
-
-#heap-recording-overview-container {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.heap-recording-overview-canvas {
-    position: absolute;
-    top: 20px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.heap-snapshot-stats-legend {
-    margin-left: 24px;
-}
-
-.heap-snapshot-stats-legend > div {
-    margin-top: 1px;
-    width: 170px;
-}
-
-.heap-snapshot-stats-swatch {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border: 1px solid rgba(100, 100, 100, 0.3);
-}
-
-.heap-snapshot-stats-swatch.heap-snapshot-stats-empty-swatch {
-    border: none;
-}
-
-.heap-snapshot-stats-name,
-.heap-snapshot-stats-size {
-    display: inline-block;
-    margin-left: 6px;
-}
-
-.heap-snapshot-stats-size {
-    float: right;
-    text-align: right;
-};/* dialog.css */
+/* dialog.css */
 
 .dialog {
     position: absolute;
@@ -4394,255 +3562,7 @@ iframe.view {
     margin-right: -25px;
     background-position: 0 -57px;
 }
-;/*
- * Copyright (C) 2006, 2007, 2008 Apple Inc.  All rights reserved.
- * Copyright (C) 2009 Anthony Ricaud <rik@webkit.org>
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * 1.  Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- * 2.  Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- * 3.  Neither the name of Apple Computer, Inc. ("Apple") nor the names of
- *     its contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY APPLE AND ITS CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL APPLE OR ITS CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-.navigator-domain-tree-item .icon {
-    content: url(Images/domain.png);
-}
-
-.navigator-folder-tree-item .icon {
-    opacity: 0.7;
-    content: url(Images/frame.png);
-}
-
-.navigator-script-tree-item .icon {
-    content: url(Images/resourceJSIcon.png);
-}
-
-.navigator-stylesheet-tree-item .icon {
-    content: url(Images/resourceCSSIcon.png);
-}
-
-.navigator-document-tree-item .icon {
-    content: url(Images/resourceDocumentIcon.png);
-}
-
-.navigator-other-tree-item .icon {
-    content: url(Images/resourcePlainIcon.png);
-}
-
-.navigator > ol {
-    min-height: 100%;
-    display: inline-block;
-}
-
-.navigator li {
-    height: 18px;
-    line-height: 17px;
-    white-space: nowrap;
-}
-
-.navigator :focus li.selected {
-    color: white;
-}
-
-.navigator li.selected .selection {
-    height: 18px;
-}
-
-.navigator > ol.being-edited li.selected .selection {
-    background-color: rgb(56, 121, 217);
-}
-
-
-.navigator .icon {
-    width: 16px;
-    height: 16px;
-    float: left;
-}
-
-.navigator .base-navigator-tree-element-title {
-    display: inline-block;
-    position: relative;
-    padding-left: 2px;
-}
-
-.navigator .base-navigator-tree-element-title.editing {
-    margin: auto;
-}
-
-.navigator-tabbed-pane {
-    flex: auto;
-}
-
-.navigator-tabbed-pane .tabbed-pane-content {
-    overflow: hidden;
-}
-
-.navigator-tabbed-pane .navigator-container {
-    overflow: auto;
-    -webkit-transform: translateZ(0);
-}
-
-.navigator-tabbed-pane .navigator {
-    padding-left: 0;
-    -webkit-transform: translateZ(0);
-}
-
-.navigator-tabbed-pane .tabbed-pane-header-contents {
-    margin-left: 2px;
-};/*
- * Copyright (C) 2006, 2007, 2008 Apple Inc.  All rights reserved.
- * Copyright (C) 2009 Anthony Ricaud <rik@webkit.org>
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * 1.  Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- * 2.  Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- * 3.  Neither the name of Apple Computer, Inc. ("Apple") nor the names of
- *     its contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY APPLE AND ITS CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL APPLE OR ITS CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-.panel-enabler-view {
-    background-color: white;
-    font-size: 13px;
-    text-align: center;
-    overflow-x: hidden;
-    overflow-y: overlay;
-    flex: auto;
-    display: flex;
-}
-
-.panel-enabler-view h1 {
-    color: rgb(110, 116, 128);
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: normal;
-    margin-top: 0;
-}
-
-.panel-enabler-view img {
-    height: 100%;
-    min-height: 200px;
-    max-width: 100%;
-    top: 0;
-    bottom: 0;
-    padding: 20px 0 20px 20px;
-    margin: auto;
-    vertical-align: middle;
-}
-
-.panel-enabler-view img.hidden {
-    display: initial !important;
-    width: 0;
-}
-
-.panel-enabler-view .flexible-space {
-    -webkit-flex: 1;
-}
-
-.panel-enabler-view form {
-    display: inline-block;
-    vertical-align: middle;
-    width: 330px;
-    margin: 0;
-    padding: 15px;
-    white-space: normal;
-}
-
-.panel-enabler-view label {
-    position: relative;
-    display: block;
-    text-align: left;
-    word-break: break-word;
-    margin: 0 0 5px 20px;
-}
-
-.panel-enabler-view button:not(.status-bar-item) {
-    font-size: 13px;
-    margin: 6px 0 0 0;
-    padding: 2px 20px;
-    height: 24px;
-    color: rgb(6, 6, 6);
-    border: 1px solid rgb(165, 165, 165);
-    background-color: rgb(237, 237, 237);
-    background-image: linear-gradient(to bottom, rgb(252, 252, 252), rgb(223, 223, 223));
-    border-radius: 12px;
-    -webkit-appearance: none;
-}
-
-body.inactive .panel-enabler-view button:not(.status-bar-item),
-.panel-enabler-view button:disabled:not(.status-bar-item) {
-    color: rgb(130, 130, 130);
-    border-color: rgb(212, 212, 212);
-    background-color: rgb(239, 239, 239);
-    background-image: linear-gradient(to bottom, rgb(250, 250, 250), rgb(235, 235, 235));
-}
-
-.panel-enabler-view button:active:not(.status-bar-item) {
-    background-color: rgb(215, 215, 215);
-    background-image: linear-gradient(to bottom, rgb(194, 194, 194), rgb(239, 239, 239));
-}
-
-.panel-enabler-view input[type="radio"] {
-    height: 17px;
-    width: 17px;
-    min-width: 17px;
-    border: 1px solid rgb(165, 165, 165);
-    background-image: linear-gradient(to bottom, rgb(252, 252, 252), rgb(223, 223, 223));
-    border-radius: 8px;
-    -webkit-appearance: none;
-    vertical-align: middle;
-    margin: 0 5px 5px 0;
-}
-
-.panel-enabler-view input[type="radio"]:active:not(:disabled) {
-    background-image: linear-gradient(to bottom, rgb(194, 194, 194), rgb(239, 239, 239));
-}
-
-.panel-enabler-view input[type="radio"]:checked {
-    background: url(Images/radioDot.png) center no-repeat,
-                linear-gradient(to bottom, rgb(252, 252, 252), rgb(223, 223, 223));
-}
-
-.panel-enabler-view input[type="radio"]:checked:active {
-    background: url(Images/radioDot.png) center no-repeat,
-                linear-gradient(to bottom, rgb(194, 194, 194), rgb(239, 239, 239));
-};/*
+/*
  * Copyright (C) 2006, 2007, 2008 Apple Inc.  All rights reserved.
  * Copyright (C) 2009 Anthony Ricaud <rik@webkit.org>
  *
@@ -4895,516 +3815,320 @@ body.inactive .profile-launcher-view-content button.running:not(.status-bar-item
     height: 120px;
     background-color: rgba(255, 255, 255, 0.7);
     pointer-events: none;
-};/*
- * Copyright (C) 2006, 2007, 2008 Apple Inc.  All rights reserved.
- * Copyright (C) 2009 Anthony Ricaud <rik@webkit.org>
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * 1.  Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- * 2.  Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- * 3.  Neither the name of Apple Computer, Inc. ("Apple") nor the names of
- *     its contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY APPLE AND ITS CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL APPLE OR ITS CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-.sidebar-pane {
-    position: relative;
+}.overview-container {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 80px;
 }
 
-.sidebar-pane > .body {
+.chart-container {
+    flex: auto;
+}
+
+#flame-chart-overview-grid .resources-dividers-label-bar {
+    pointer-events: auto;
+}
+
+.flame-chart-main-pane {
+    overflow: hidden;
+}
+
+.flame-chart-overview-pane {
+    flex: 0 0 80px !important;
+}
+
+#flame-chart-overview-container {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.flame-chart-overview-canvas {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.chart-container .entry-info {
+    position: absolute;
+    left: 10px;
+    top: 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+}
+
+.chart-container .entry-info .title {
+    font-weight: bold;
+}
+
+.flame-chart-highlight-element {
+    background-color: black;
+    position: absolute;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.flame-chart-selected-element {
+    position: absolute;
+    pointer-events: none;
+    border-color: rgb(56, 121, 217);
+    border-width: 2px;
+    border-style: solid;
+    background-color: rgba(56, 121, 217, 0.2);
+}
+
+.flame-chart-v-scroll {
+    flex: 0 0 15px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}.data-grid {
     position: relative;
+    border: 1px solid #aaa;
+    font-size: 11px;
+    line-height: 120%;
+}
+
+.data-grid .highlight {
+    background-color: rgb(255, 230, 179);
+}
+
+.data-grid tr.selected .highlight {
+    background-color: transparent;
+}
+
+.data-grid table {
+    table-layout: fixed;
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.data-grid .data-container {
+    position: absolute;
+    top: 17px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+    overflow-y: overlay;
+    -webkit-transform: translateZ(0);
+}
+
+.data-grid.inline {
+    border-left: none;
+}
+
+.data-grid.inline .data-container {
+    position: static;
+}
+
+.data-grid.inline th.corner,
+.data-grid.inline td.corner {
     display: none;
 }
 
-.sidebar-pane > .body .info {
-    text-align: center;
-    font-style: italic;
-    font-size: 90%;
-    padding: 6px;
-    color: #888;
-}
-
-.sidebar-pane > .body .placard + .info {
-    border-top: 1px solid rgb(189, 189, 189);
-    background-color: rgb(255, 255, 194);
-}
-
-.sidebar-pane.visible > .body {
-    display: block;
-}
-
-.sidebar-pane .section .properties {
-    padding-left: 16px;
-}
-
-.sidebar-tabbed-pane .tabbed-pane-header {
-    border-bottom: 1px solid rgb(202, 202, 202);
+.data-grid th {
+    text-align: left;
     background-color: rgb(236, 236, 236);
-}
-
-.sidebar-pane-stack > .sidebar-pane.visible:nth-last-of-type(1) {
-    border-bottom: 1px solid rgb(189, 189, 189);
-}
-
-.sidebar-pane-title {
-    position: relative;
-    background: rgb(240, 240, 240);
-    height: 20px;
-    padding: 0 5px;
-    border-top: 1px solid rgb(189, 189, 189);
-    border-bottom: 1px solid rgb(189, 189, 189);
-    line-height: 18px;
-    background-origin: padding;
-    background-clip: padding;
-    margin-top: -1px;
+    border: 1px solid rgb(179, 179, 179);
+    border-top: none;
+    border-right: none;
+    height: 16px;
+    line-height: 16px;
+    font-weight: normal;
+    vertical-align: middle;
+    padding: 0 4px;
     white-space: nowrap;
 }
 
-.sidebar-pane-title:active {
-    background-color: rgb(204, 204, 204);
-    border-top: 1px solid rgb(178, 178, 178);
-    border-bottom: 1px solid rgb(178, 178, 178);
+.data-grid th.corner,
+.data-grid td.corner,
+.data-grid col.corner {
+    width: 14px;
+    padding-right: 0;
+    padding-left: 0;
+    border-left: 0 none transparent !important;
 }
 
-.sidebar-pane-title::before {
+.data-grid tr.filler {
+    display: table-row !important;
+    height: auto !important;
+}
+
+.data-grid tr.filler td {
+    height: auto !important;
+    padding: 0 !important;
+}
+
+.data-grid table.data {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    border-top: 0 none transparent;
+    background-image: linear-gradient(to bottom, white, white 50%, rgb(234, 243, 255) 50%, rgb(234, 243, 255));
+    background-size: 128px 32px;
+    table-layout: fixed;
+}
+
+.data-grid.inline table.data {
+    position: static;
+}
+
+.data-grid table.data tr {
+    display: none;
+}
+
+.data-grid table.data tr.revealed {
+    display: table-row;
+}
+
+.data-grid td {
+    vertical-align: top;
+    height: 16px; /* Keep in sync with .data-grid table.data @ background-size */
+    line-height: 14px;
+    padding: 1px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-left: 1px solid #aaa;
+    -webkit-user-select: text;
+}
+
+.data-grid th:first-child,
+.data-grid td:first-child {
+    border-left: none !important;
+}
+
+.data-grid td > div,
+.data-grid th > div {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.data-grid td.editing > div {
+    text-overflow: clip;
+}
+
+.data-grid .center div {
+    text-align: center;
+}
+
+.data-grid .right div {
+    text-align: right;
+}
+
+.data-grid th.sortable div {
+    position: relative;
+}
+
+.data-grid th.sortable:active {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.data-grid th.sort-ascending > div::after,
+.data-grid th.sort-descending > div::after {
+    position: absolute;
+    top: 1px;
+    right: 0;
     background-size: 320px 144px;
     opacity: 0.5;
-    float: left;
-    width: 11px;
-    height: 11px;
-    margin-right: 2px;
+    width: 8px;
+    height: 10px;
     content: "a";
     color: transparent;
-    position: relative;
-    top: 3px;
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.5) {
-.sidebar-pane-title::before {
+.data-grid th.sort-ascending > div::after,
+.data-grid th.sort-descending > div::after {
     background-image: url(Images/statusbarButtonGlyphs_2x.png);
 }
 } /* media */
 
-.sidebar-pane-title::before {
-    background-position: -4px -96px;
+.data-grid th.sort-ascending > div::after {
+    background-position: -4px -108px;
 }
 
-.sidebar-pane-title.expanded::before {
+.data-grid th.sort-descending > div::after {
     background-position: -20px -96px;
 }
 
-.sidebar-pane-toolbar {
+.data-grid th:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.data-grid button {
     line-height: 18px;
-    left: 0;
-    right: 4px;
-    top: 0;
-    height: 20px;
-    position: absolute;
-    pointer-events: none;
+    color: inherit;
 }
 
-.sidebar-pane-toolbar > * {
-    pointer-events: auto;
-}
-
-.sidebar-pane-toolbar > .pane-title-button,
-.sidebar-pane-toolbar > label {
-    float: right;
-    height: 19px;
-    background-color: transparent;
-    border: none;
-    background-repeat: no-repeat;
-    margin: 1px 0 0 0;
-    padding: 0;
-    border-radius: 0;
-    -webkit-appearance: none;
-}
-
-.sidebar-pane-toolbar > .pane-title-button {
-    width: 23px;
+.data-grid tr.parent td.disclosure::before {
+    -webkit-user-select: none;
+    -webkit-mask-size: 320px 144px;
+    float: left;
+    width: 8px;
+    margin-right: 2px;
+    content: "a";
     color: transparent;
+    position: relative;
+    top: 1px;
 }
 
-.sidebar-pane-toolbar > .pane-title-button:hover {
-    background-position: -23px 0;
+.data-grid tr.parent td.disclosure::before {
+    background-color: rgb(110, 110, 110);
+    -webkit-mask-position: -4px -96px;
 }
 
-.sidebar-pane-toolbar > .pane-title-button:active,
-.sidebar-pane-toolbar > .pane-title-button.toggled {
-    background-position: -46px 0;
+@media (-webkit-min-device-pixel-ratio: 1.5) {
+.data-grid tr.parent td.disclosure::before {
+    -webkit-mask-image: url(Images/statusbarButtonGlyphs_2x.png);
+}
+} /* media */
+
+.data-grid tr.expanded td.disclosure::before {
+    -webkit-mask-position: -20px -96px;
 }
 
-.sidebar-pane-toolbar > .pane-title-button.add {
-    background-image: url(Images/paneAddButtons.png);
+.data-grid tr.selected {
+    background-color: rgb(212, 212, 212);
+    color: inherit;
 }
 
-.sidebar-pane-toolbar > .pane-title-button.element-state {
-    background-image: url(Images/paneElementStateButtons.png);
+.data-grid:focus tr.selected {
+    background-color: rgb(56, 121, 217);
+    color: white;
 }
 
-.sidebar-pane-toolbar > .pane-title-button.refresh {
-    background-image: url(Images/paneRefreshButtons.png);
+.data-grid:focus tr.selected a {
+    color: white;
 }
 
-.sidebar-pane-toolbar > label.scripts-callstack-async {
-    margin: auto;
-    margin-right: 5px;
-    display: flex;
+.data-grid:focus tr.parent.selected td.disclosure::before {
+    background-color: white;
+    -webkit-mask-position: -4px -96px;
 }
 
-.sidebar-pane-subtitle {
-    position: absolute;
-    right: 0;
+.data-grid:focus tr.expanded.selected td.disclosure::before {
+    background-color: white;
+    -webkit-mask-position: -20px -96px;
 }
 
-body.platform-windows .sidebar-pane-subtitle {
-    padding-top: 1px;
+.data-grid tr:not(.parent) td.disclosure {
+    text-indent: 10px;
 }
 
-.section > .header input[type=checkbox] {
-    height: 1em;
-    width: 1em;
-    margin-left: 0;
-    margin-top: 0;
-    margin-bottom: 0.25em;
-    vertical-align: bottom;
-};/*
- * Copyright (C) 2006, 2007, 2008 Apple Inc.  All rights reserved.
- * Copyright (C) 2009 Anthony Ricaud <rik@webkit.org>
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * 1.  Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- * 2.  Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- * 3.  Neither the name of Apple Computer, Inc. ("Apple") nor the names of
- *     its contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY APPLE AND ITS CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL APPLE OR ITS CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-.scripts-pause-on-exceptions-status-bar-item .glyph {
-    -webkit-mask-position: -256px 0;
-}
-
-.scripts-pause-on-exceptions-status-bar-item.toggled-on .glyph {
-    background-color: rgb(66, 129, 235);
-}
-
-.evaluate-snippet-status-bar-item .glyph {
-    -webkit-mask-position: -64px -48px;
-}
-
-.evaluate-snippet-status-bar-item.toggled .glyph {
-    background-color: rgb(66, 129, 235);
-}
-
-.scripts-debug-toolbar {
+.data-grid-resizer {
     position: absolute;
     top: 0;
-    width: 100%;
-    background-color: rgb(236, 236, 236);
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.scripts-debug-toolbar-drawer {
-    flex: 0 0 46px;
-    -webkit-transition: margin-top 0.1s ease-in-out;
-    margin-top: -23px;
-    line-height: 23px;
-    padding-top: 22px;
-    border-bottom: 1px solid rgb(202, 202, 202);
-    background-color: white;
-    overflow: hidden;
-}
-
-.scripts-debug-toolbar-drawer.expanded {
-    margin-top: 0;
-}
-
-.scripts-debug-toolbar-drawer > label {
-    display: flex;
-    padding-left: 3px;
-    border-top: 1px solid rgb(196,196,196);
-}
-
-#scripts-editor-toolbar {
-    position: relative;
-    margin-top: -1px;
-    height: 24px;
-}
-
-.scripts-run-snippet .glyph {
-    -webkit-mask-position: -64px -48px;
-}
-
-.scripts-pause .glyph {
-    -webkit-mask-position: -32px -72px;
-}
-
-.scripts-pause.toggled-on .glyph {
-    -webkit-mask-position: 0 -72px;
-}
-
-.scripts-step-over .glyph {
-    -webkit-mask-position: -128px -72px;
-}
-
-.scripts-step-into .glyph {
-    -webkit-mask-position: -64px -72px;
-}
-
-.scripts-step-out .glyph {
-    -webkit-mask-position: -96px -72px;
-}
-
-.scripts-long-resume .glyph {
-    -webkit-mask-position: -64px -48px;
-}
-
-.scripts-toggle-breakpoints.toggled-on .glyph {
-    -webkit-mask-position: -32px 0;
-}
-
-.scripts-toggle-breakpoints .glyph {
-    -webkit-mask-position: 0 -24px;
-}
-
-.dedicated-worker-item {
-    margin: 5px 0 5px 1px;
-}
-
-#shared-workers-list {
-    margin: 5px 0 5px 20px;
-    font-style:italic;
-}
-
-#pause-workers-checkbox > input {
-    position: relative;
-    top: 2px;
-}
-
-.panel.sources #sources-editor-container-tabbed-pane .tabbed-pane-header-contents {
-    margin-left: 22px;
-    margin-right: 36px;
-}
-
-.panel.sources .split-view button.scripts-debugger-show-hide-button.right-sidebar-show-hide-button.toggled-hide {
-    margin-right: 15px;
-}
-
-.panel.sources .split-view #scripts-debug-sidebar-resizer-widget.ns-resizer-widget {
-    -webkit-transform: rotate(90deg);
-    right: 17px;
-    bottom: 4px;
-    top: auto;
-    height: 10px;
-    width: 18px;
-}
-
-.panel.sources .split-view.hbox #scripts-debug-sidebar-resizer-widget {
     bottom: 0;
-}
-
-.panel.sources .scripts-debugger-show-hide-button {
-    display: block;
-}
-
-.panel.sources button.status-bar-item.scripts-navigator-show-hide-button {
-    display: block;
-    top: 4px;
-    left: 4px;
-}
-
-.panel.sources .navigator-tabbed-pane .tabbed-pane-header {
-    background-color: rgb(236, 236, 236);
-}
-
-.function-location-link {
-    float: right;
-    margin-left: 10px;
-}
-
-.function-popover-title {
-    border-bottom: 1px solid #AAA;
-    margin-bottom: 3px;
-    padding-bottom: 2px;
-}
-
-.function-popover-title .function-name {
-    font-weight: bold;
-}
-
-.workers-list > li {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-left: 1em;
-    font-size: 12px;
-}
-
-a.worker-item {
-    color: rgb(33%, 33%, 33%);
-    cursor: pointer;
-    text-decoration: none;
-}
-
-a.worker-item:hover {
-    color: rgb(15%, 15%, 15%);
-}
-
-.panel.sources .sidebar-pane-stack {
-    overflow: auto;
-}
-
-.threads-toolbar {
-    padding-left: 10px;
-    margin-top: -1px;
-}
-
-.panel.sources .drag-mask {
-    background-color: rgba(255,255,255,0.8);
-    z-index: 1000;
-}
-
-.panel.sources .drag-mask-inner {
-    font-size: 30px;
-    color: #999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    border: 4px dashed #ddd;
-    pointer-events: none;
-};/*
- * Copyright (C) 2013 Google Inc. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are
- * met:
- *
- *     * Redistributions of source code must retain the above copyright
- * notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above
- * copyright notice, this list of conditions and the following disclaimer
- * in the documentation and/or other materials provided with the
- * distribution.
- *     * Neither the name of Google Inc. nor the names of its
- * contributors may be used to endorse or promote products derived from
- * this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-#sources-panel-sources-view {
-    flex: auto;
-    position: relative;
-}
-
-#sources-editor-container-tabbed-pane {
-    flex: auto;
-}
-
-#sources-editor-container-tabbed-pane .tabbed-pane-header-tab {
-    border-bottom: 1px solid #BBB;
-}
-
-#sources-panel-sources-view .tabbed-pane-header {
-    background-color: rgb(236, 236, 236);
-}
-
-#sources-panel-sources-view .sources-status-bar {
-    display: flex;
-    position: relative;
-    flex: 0 0 20px;
-    background-color: rgb(236, 236, 236);
-    border-top: 1px solid rgb(196,196,196);
-}
-
-#sources-panel-sources-view .sources-status-bar .status-bar-item {
-    margin-top: -1px;
-    height: 20px;
-}
-
-#sources-panel-sources-view .sources-status-bar .status-bar-item.status-bar-text {
-    margin: auto 0;
-    height: auto;
-}
-
-#sources-panel-sources-view .source-frame-cursor-position {
-    -webkit-user-select: text;
-}
-
-#sources-panel-sources-view .sources-toggle-pretty-print-status-bar-item .glyph {
-    -webkit-mask-position: -256px -24px;
-}
-
-#sources-panel-sources-view .sources-toggle-pretty-print-status-bar-item.toggled .glyph {
-    background-color: rgb(66, 129, 235);
-}
-
-.source-frame-debugger-script {
-    background-color: rgba(255, 255, 194, 0.5);
-}
-
-.source-frame-unsaved-committed-changes {
-    background-color: rgba(255, 225, 205, 0.40);
-}
-
-.editor-container-unsaved-committed-changes-icon {
-    background-size: 320px 144px;
-    background-position: -202px -107px;
-}
-
-button.status-bar-item.scripts-debugger-show-hide-button {
-    display: none;
-}
-
-button.status-bar-item.scripts-navigator-show-hide-button {
-    display: none;
-};/*
+    width: 5px;
+    z-index: 500;
+}/*
  * Copyright (C) 2011 Google Inc. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -5562,72 +4286,9 @@ button.status-bar-item.scripts-navigator-show-hide-button {
     -webkit-mask-position: -264px -76px; /* >| */
     -webkit-transform: rotate(90deg);
 }
-;/*
- * Copyright (C) 2011 Google Inc. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are
- * met:
- *
- *     * Redistributions of source code must retain the above copyright
- * notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above
- * copyright notice, this list of conditions and the following disclaimer
- * in the documentation and/or other materials provided with the
- * distribution.
- *     * Neither the name of Google Inc. nor the names of its
- * contributors may be used to endorse or promote products derived from
- * this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-.suggest-box {
-    position: absolute;
-    background-color: #FFFFFF;
-    display: block;
-    border: 1px solid black;
-    padding: 2px;
-    z-index: 600;
+.toolbar, .sidebar, .split-view-resizer, .profile-launcher-view-content {
+	display: none
 }
-
-.suggest-box .container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.suggest-box-content-item {
-    padding: 1px;
-    margin: 0;
-    font-size: 11px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    border: 1px solid transparent;
-}
-
-.suggest-box-content-item .prefix {
-    font-weight: bold;
-}
-
-.suggest-box-content-item.selected {
-    background-color: rgba(56, 121, 217, 0.1);
-}
-
-.suggest-box-content-item:hover:not(.selected) {
-    border: 1px solid rgb(204, 204, 204);
+.split-view-sidebar {
+	flex-basis: 0px!important;
 }

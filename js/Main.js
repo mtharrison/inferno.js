@@ -6406,7 +6406,7 @@ WebInspector.View._buildSourceURL = function (cssFile) {
     return "\n/*# sourceURL=" + WebInspector.ParsedURL.completeURL(window.location.href, cssFile) + " */";
 }
 WebInspector.View.createStyleElement = function (cssFile) {
-
+    return console.log("Trying to load: " + cssFile)
     var styleElement;
     var xhr = new XMLHttpRequest();
     xhr.open("GET", cssFile, false);

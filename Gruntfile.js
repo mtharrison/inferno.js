@@ -4,17 +4,28 @@ module.exports = function(grunt) {
     concat: {
       options: {
         // define a string to put between each file in the concatenated output
-        separator: ';'
+        separator: ''
       },
       js: {
         // the files to concatenate
-        src: ['js/*.js'],
+        src: [
+          'js/Main.js', 
+          'js/ProfilesPanel.js', 
+          'js/Inferno.js'
+        ],
         // the location of the resulting JS file
         dest: 'dist/<%= pkg.name %>.js'
       },
       css: {
         // the files to concatenate
-        src: ['css/*.css'],
+        src: [
+          'css/inspector.css', 
+          'css/profilesPanel.css', 
+          'css/flameChart.css', 
+          'css/dataGrid.css', 
+          'css/splitView.css', 
+          'css/custom.css', 
+        ],
         // the location of the resulting JS file
         dest: 'dist/<%= pkg.name %>.css'
       }
@@ -42,5 +53,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.registerTask('build', ['concat', 'uglify', 'cssmin']);
+  grunt.registerTask('build', ['concat', 'cssmin', 'uglify']);
 };
