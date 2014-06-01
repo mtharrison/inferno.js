@@ -1,0 +1,12 @@
+.toolbar, .sidebar, .split-view-resizer, .profile-launcher-view-content {
+	display: none
+}
+.split-view-sidebar {
+	flex-basis: 0px!important;
+}
+#flamey {
+	width: 500px;
+	height: 500px;
+	margin: auto;
+	margin-top: 300px;
+}
