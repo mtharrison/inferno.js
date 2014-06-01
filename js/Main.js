@@ -831,6 +831,8 @@ var _importedScripts = {};
 
 function importScript(scriptName) {
 
+    return console.log("Trying to load: " + scriptName);
+
     if (_importedScripts[scriptName])
         return;
 
@@ -1092,12 +1094,6 @@ var allDescriptors = [{
         order: 20,
         className: "WebInspector.ConsolePanel"
     }, {
-        type: "drawer-view",
-        name: "console",
-        title: "Console",
-        order: "0",
-        className: "WebInspector.ConsolePanel.WrapperView"
-    }, {
         type: "@WebInspector.Revealer",
         contextTypes: ["WebInspector.ConsoleModel"],
         className: "WebInspector.ConsolePanel.ConsoleRevealer"
@@ -1108,7 +1104,7 @@ var allDescriptors = [{
         }],
         className: "WebInspector.ConsoleView.ShowConsoleActionDelegate"
     }],
-    scripts: ["ConsolePanel.js"]
+    scripts: []
 }, {
     name: "settings",
     extensions: [{
