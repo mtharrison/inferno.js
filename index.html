@@ -1,49 +1,37 @@
-	<!doctype html>
-	<html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		
-		<link rel="stylesheet" type="text/css" href="/inspector.css">
-		<link rel="stylesheet" type="text/css" href="/splitView.css">
-		<link rel="stylesheet" type="text/css" href="/filter.css">
-		<link rel="stylesheet" type="text/css" href="/textPrompt.css">
-		<link rel="stylesheet" type="text/css" href="/panelEnablerView.css">
-		<link rel="stylesheet" type="text/css" href="/heapProfiler.css">
-		<link rel="stylesheet" type="text/css" href="/profilesPanel.css">
-		<link rel="stylesheet" type="text/css" href="/flameChart.css">
-		<link rel="stylesheet" type="text/css" href="/dataGrid.css">
-		<link rel="stylesheet" type="text/css" href="/custom.css">
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	
+	<link rel="stylesheet" type="text/css" href="/inspector.css">
+	<link rel="stylesheet" type="text/css" href="/profilesPanel.css">
+	<link rel="stylesheet" type="text/css" href="/flameChart.css">
+	<link rel="stylesheet" type="text/css" href="/dataGrid.css">
+	<link rel="stylesheet" type="text/css" href="/custom.css">
 
-		<script type="text/javascript" src="/Main.js"></script>
-		<script type="text/javascript" src="/ConsolePanel.js"></script>
-		<script type="text/javascript" src="/ProfilesPanel.js"></script>
-		<script type="text/javascript" src="/SourcesPanel.js"></script>
-		<script type="text/javascript" src="/Inferno.js"></script>
+	<script type="text/javascript" src="/Main.js"></script>
+	<script type="text/javascript" src="/ProfilesPanel.js"></script>
+	<script type="text/javascript" src="/Inferno.js"></script>
 
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-		</head>
-		<body>
+</head>
+<body>
 
-			<script>
+	<script>
 
-				$.getJSON('sampleData.json', function(data){
-					setTimeout(function(){
+		// Get some CPU data and load it into the chart
+		// 
+		$.getJSON('sampleData.json', function(data){
+			new Inferno(data, "inferno");
+		})
 
-						var type 	= new WebInspector.CPUProfileType();
-						var header 	= new WebInspector.CPUProfileHeader(type);
-						header.setProtocolProfile(data);
-						WebInspector.panels.profiles.showProfile(header)
+	</script>
 
-					}, 1000);
-				})
-				
-			</script>
-
-		</body>
+</body>
 
 
-		</html>
+</html>
 
-	</body>
-	</html>
+</body>
+</html>
