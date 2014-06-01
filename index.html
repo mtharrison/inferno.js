@@ -4,6 +4,22 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<link rel="stylesheet" type="text/css" href="/inspector.css">
 		<script type="text/javascript" src="/Main.js"></script>
+		<script type="text/javascript" src="/sampleData.js"></script>
+
+		<style>
+			.toolbar, .sidebar, .split-view-resizer, .profile-launcher-view-content {
+				display: none
+			}
+			.split-view-sidebar {
+				flex-basis: 0px!important;
+			}
+			#flamey {
+				width: 500px;
+				height: 500px;
+				margin: auto;
+				margin-top: 300px;
+			}
+		</style>
 
 		<script>
 
@@ -12,14 +28,34 @@
 			 * of a build system. Build system flattenes all css and js files,
 			 * so in this case inspector has to correct paths for dynamic resource loading.
 			 */
-			window.flattenImports = true;
-			window.DEBUG = false;
+			 window.flattenImports = true;
+			 window.DEBUG = false;
 
-		</script>
+			</script>
 
-	</head>
-	<body class="undocked" id="-blink-dev-tools"></body>
+		</head>
+		<body>
+
+		<div id="flamey"></div>
+			
+			<script>
+
+			setTimeout(function(){
+
+				var type = new WebInspector.CPUProfileType();
+				var header = new WebInspector.CPUProfileHeader(type);
+				header.setProtocolProfile(data);
+				header.updateStatus("");
+				WebInspector.panels.profiles.showProfile(header)
+
+			}, 1000);
+				
+			</script>
+
+		</body>
+
+
+		</html>
+
+	</body>
 	</html>
-	
-</body>
-</html>

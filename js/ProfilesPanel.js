@@ -426,7 +426,7 @@ WebInspector.ProfilesPanel.prototype = {
         this.visibleView = view;
         var profileTypeSection = this._typeIdToSidebarSection[profile.profileType().id];
         var sidebarElement = profileTypeSection.sidebarElementForProfile(profile);
-        sidebarElement.revealAndSelect();
+//        sidebarElement.revealAndSelect();
         this._profileViewStatusBarItemsContainer.removeChildren();
         var statusBarItems = view.statusBarItems;
         if (statusBarItems)
@@ -1281,7 +1281,7 @@ WebInspector.CPUProfileView = function (profileHeader) {
     this.showSelfTimeAsPercent = WebInspector.settings.createSetting("cpuProfilerShowSelfTimeAsPercent", true);
     this.showTotalTimeAsPercent = WebInspector.settings.createSetting("cpuProfilerShowTotalTimeAsPercent", true);
     this.showAverageTimeAsPercent = WebInspector.settings.createSetting("cpuProfilerShowAverageTimeAsPercent", true);
-    this._viewType = WebInspector.settings.createSetting("cpuProfilerView", WebInspector.CPUProfileView._TypeHeavy);
+    this._viewType = WebInspector.settings.createSetting("cpuProfilerView", WebInspector.CPUProfileView._TypeFlame);
     var columns = [];
     columns.push({
         id: "self",
