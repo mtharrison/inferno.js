@@ -216,7 +216,7 @@ WebInspector.ProfileTypeRegistry = function () {
     this._addProfileType(this.heapSnapshotProfileType);
     this.trackingHeapSnapshotProfileType = new WebInspector.TrackingHeapSnapshotProfileType();
     this._addProfileType(this.trackingHeapSnapshotProfileType);
-    HeapProfilerAgent.enable();
+//    HeapProfilerAgent.enable();
     if (Capabilities.isMainFrontend && WebInspector.experimentsSettings.canvasInspection.isEnabled()) {
         this.canvasProfileType = new WebInspector.CanvasProfileType();
         this._addProfileType(this.canvasProfileType);
@@ -1725,7 +1725,7 @@ WebInspector.CPUProfileType = function () {
     this._nextAnonymousConsoleProfileNumber = 1;
     this._anonymousConsoleProfileIdToTitle = {};
     WebInspector.CPUProfileType.instance = this;
-    WebInspector.cpuProfilerModel.setDelegate(this);
+    //WebInspector.cpuProfilerModel.setDelegate(this);
 }
 WebInspector.CPUProfileType.TypeId = "CPU";
 WebInspector.CPUProfileType.prototype = {

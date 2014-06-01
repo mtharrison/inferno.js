@@ -578,7 +578,6 @@ body.undocked.platform-mac.inactive .toolbar-background {
 
 .close-button,
 .close-button-gray {
-    background-image: url(Images/statusbarButtonGlyphs.png);
     background-size: 320px 144px;
     display: inline-block;
 }
@@ -711,7 +710,6 @@ body.remote .toolbar-item .close-button {
 
 .long-click-glyph {
     background-color: rgba(0, 0, 0, 0.75);
-    -webkit-mask-image: url(Images/statusbarButtonGlyphs.png);
     -webkit-mask-position: -288px -48px;
     -webkit-mask-size: 320px 144px;
     z-index: 1;
@@ -768,7 +766,6 @@ button.status-bar-item.extension {
 }
 
 .status-bar-select-arrow {
-    background-image: url(Images/statusbarButtonGlyphs.png);
     background-size: 320px 144px;
     opacity: 0.7;
     width: 12px;
@@ -819,7 +816,7 @@ select.status-bar-item {
 }
 
 .status-bar-item > .glyph {
-    -webkit-mask-image: url(Images/statusbarButtonGlyphs.png);
+    
     -webkit-mask-size: 320px 144px;
     opacity: 0.8;
 }
@@ -930,7 +927,6 @@ body.remote .dock-status-bar-item {
 .red-ball,
 .green-ball,
 .orange-ball {
-    background-image: url(Images/statusbarButtonGlyphs.png);
     background-size: 320px 144px;
     width: 10px;
     height: 10px;
@@ -1109,7 +1105,7 @@ body.platform-linux .source-code {
     height: 10px;
     margin-top: -6px;
     -webkit-user-select: none;
-    background-image: url(Images/statusbarButtonGlyphs.png);
+    
     background-size: 320px 144px;
 }
 
@@ -1180,7 +1176,7 @@ body.platform-linux .source-code {
 
 .console-group-title::before {
     -webkit-user-select: none;
-    -webkit-mask-image: url(Images/statusbarButtonGlyphs.png);
+    
     -webkit-mask-size: 320px 144px;
     float: left;
     width: 8px;
@@ -1242,7 +1238,7 @@ body.platform-linux .source-code {
 .console-warning-level::before,
 .console-debug-level::before,
 .console-info-level::before {
-    background-image: url(Images/statusbarButtonGlyphs.png);
+    
     background-size: 320px 144px;
     width: 10px;
     height: 10px;
@@ -1586,7 +1582,7 @@ iframe.panel.extension {
 
 .outline-disclosure li.parent::before {
     -webkit-user-select: none;
-    -webkit-mask-image: url(Images/statusbarButtonGlyphs.png);
+    
     -webkit-mask-size: 320px 144px;
     content: "a";
     color: transparent;
@@ -1705,7 +1701,7 @@ iframe.panel.extension {
 
 .section > .header::before {
     -webkit-user-select: none;
-    background-image: url(Images/statusbarButtonGlyphs.png);
+    
     background-size: 320px 144px;
     opacity: 0.5;
     content: "a";
@@ -1813,7 +1809,7 @@ iframe.panel.extension {
 
 .properties-tree li.parent::before {
     -webkit-user-select: none;
-    background-image: url(Images/statusbarButtonGlyphs.png);
+    
     background-size: 320px 144px;
     opacity: 0.5;
     content: "a";
@@ -2211,7 +2207,7 @@ button.show-all-nodes:active {
     width: 10px;
     height: 10px;
     border: 0;
-    -webkit-mask-image: url(Images/statusbarButtonGlyphs.png);
+    
     -webkit-mask-size: 320px 144px;
     -webkit-appearance: none;
     background-color: rgba(0, 0, 0, 0.75);
@@ -2751,7 +2747,7 @@ body.platform-mac .search-drawer-header input[type="search"].search-config-searc
 
 #search-results-pane-file-based li.parent::before {
     -webkit-user-select: none;
-    background-image: url(Images/statusbarButtonGlyphs.png);
+    
     background-size: 320px 144px;
     opacity: 0.5;
     width: 12px;

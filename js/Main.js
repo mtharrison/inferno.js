@@ -804,6 +804,8 @@ StringSet.prototype = {
 }
 
 function loadXHR(url, async, callback) {
+    console.log("Loading: " + url);
+
     function onReadyStateChanged() {
         if (xhr.readyState !== XMLHttpRequest.DONE)
             return;
@@ -828,8 +830,10 @@ function loadXHR(url, async, callback) {
 var _importedScripts = {};
 
 function importScript(scriptName) {
+
     if (_importedScripts[scriptName])
         return;
+
     var xhr = new XMLHttpRequest();
     _importedScripts[scriptName] = true;
     xhr.open("GET", scriptName, false);
@@ -3450,7 +3454,7 @@ InspectorBackendClass.prototype = {
         this._initialized = true;
     },
     registerDomainDispatcher: function (domain, dispatcher) {
-        this._connection.registerDispatcher(domain, dispatcher);
+//        this._connection.registerDispatcher(domain, dispatcher);
     },
     loadFromJSONIfNeeded: function (jsonUrl) {
         if (this._initialized)
@@ -6406,6 +6410,7 @@ WebInspector.View._buildSourceURL = function (cssFile) {
     return "\n/*# sourceURL=" + WebInspector.ParsedURL.completeURL(window.location.href, cssFile) + " */";
 }
 WebInspector.View.createStyleElement = function (cssFile) {
+
     var styleElement;
     var xhr = new XMLHttpRequest();
     xhr.open("GET", cssFile, false);

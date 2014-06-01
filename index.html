@@ -2,53 +2,39 @@
 	<html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		
 		<link rel="stylesheet" type="text/css" href="/inspector.css">
-		<script type="text/javascript" src="/Main.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="/splitView.css">
+		<link rel="stylesheet" type="text/css" href="/filter.css">
+		<link rel="stylesheet" type="text/css" href="/textPrompt.css">
+		<link rel="stylesheet" type="text/css" href="/panelEnablerView.css">
+		<link rel="stylesheet" type="text/css" href="/heapProfiler.css">
+		<link rel="stylesheet" type="text/css" href="/profilesPanel.css">
+		<link rel="stylesheet" type="text/css" href="/flameChart.css">
+		<link rel="stylesheet" type="text/css" href="/dataGrid.css">
+		<link rel="stylesheet" type="text/css" href="/custom.css">
+
 		<script type="text/javascript" src="/sampleData.js"></script>
+		<script type="text/javascript" src="/Main.js"></script>
+		<script type="text/javascript" src="/ConsolePanel.js"></script>
+		<script type="text/javascript" src="/ProfilesPanel.js"></script>
+		<script type="text/javascript" src="/SourcesPanel.js"></script>
 
-		<style>
-			.toolbar, .sidebar, .split-view-resizer, .profile-launcher-view-content {
-				display: none
-			}
-			.split-view-sidebar {
-				flex-basis: 0px!important;
-			}
-			#flamey {
-				width: 500px;
-				height: 500px;
-				margin: auto;
-				margin-top: 300px;
-			}
-		</style>
-
-		<script>
-
-			/**
-			 * This flag notifies inspector that it was deployed with the help
-			 * of a build system. Build system flattenes all css and js files,
-			 * so in this case inspector has to correct paths for dynamic resource loading.
-			 */
-			 window.flattenImports = true;
-			 window.DEBUG = false;
-
-			</script>
 
 		</head>
 		<body>
 
-		<div id="flamey"></div>
-			
 			<script>
 
-			setTimeout(function(){
+				setTimeout(function(){
 
-				var type = new WebInspector.CPUProfileType();
-				var header = new WebInspector.CPUProfileHeader(type);
-				header.setProtocolProfile(data);
-				header.updateStatus("");
-				WebInspector.panels.profiles.showProfile(header)
+					var type 	= new WebInspector.CPUProfileType();
+					var header 	= new WebInspector.CPUProfileHeader(type);
+					header.setProtocolProfile(data);
+					WebInspector.panels.profiles.showProfile(header)
 
-			}, 1000);
+				}, 1000);
 				
 			</script>
 

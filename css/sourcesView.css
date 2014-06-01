@@ -84,7 +84,6 @@
 }
 
 .editor-container-unsaved-committed-changes-icon {
-    background-image: url(Images/statusbarButtonGlyphs.png);
     background-size: 320px 144px;
     background-position: -202px -107px;
 }
