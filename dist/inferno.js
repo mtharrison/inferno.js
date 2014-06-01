@@ -7498,6 +7498,7 @@ if (!window.InspectorFrontendHost) {
         moveWindowBy: function (x, y) {},
         setInjectedScriptForOrigin: function (origin, script) {},
         inspectedURLChanged: function (url) {
+            return;
             document.title = WebInspector.UIString(Preferences.applicationTitle, url);
         },
         copyText: function (text) {
