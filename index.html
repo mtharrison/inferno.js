@@ -1,55 +1,25 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Flamey</title>
+	<!doctype html>
+	<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="/inspector.css">
+		<script type="text/javascript" src="/Main.js"></script>
 
-	<script src="./sampleData.js"></script>
-	<script src="./js/Main.js"></script>
-	<script src="./js/SourcesPanel.js"></script>
-	<script src="./js/ProfilesPanel.js"></script>
+		<script>
 
-	
-	<link rel="stylesheet" href="./css/sourcesPanel.css">
-	<link rel="stylesheet" href="./css/textPrompt.css">
-	<link rel="stylesheet" href="./css/sidebarPane.css">
-	<link rel="stylesheet" href="./css/breakpointsList.css">
-	<link rel="stylesheet" href="./css/sourcesView.css">
-	<link rel="stylesheet" href="./css/navigatorView.css">
-	<link rel="stylesheet" href="./css/splitView.css">
+			/**
+			 * This flag notifies inspector that it was deployed with the help
+			 * of a build system. Build system flattenes all css and js files,
+			 * so in this case inspector has to correct paths for dynamic resource loading.
+			 */
+			window.flattenImports = true;
+			window.DEBUG = false;
 
-</head>
-<body>
+		</script>
 
-	<div id="container"></div>
-
-	<script>
-
-	// var panel = new WebInspector.ProfilesPanel();
-
-	// var type = new WebInspector.CPUProfileType();
-
-	// var header = new WebInspector.CPUProfileHeader(type);
-
-	// header.setProtocolProfile(data);
-	// header.updateStatus("");
-	// panel.showProfile(header);
-
-	// document.getElementById('container').appendChild(panel.element);
-
-
-	// // // STEP 2: Get a view object
-	// // var view = new WebInspector.CPUProfileView(header); // where this is an instance of WebInspector.CPUProfileHeader
-
-	// // // STEP 3: Build up a data provider from the view (??)
-	// // var dataProvider = new WebInspector.CPUFlameChartDataProvider(view); // where this is an instance of WebInspector.CPUProfileView
-	
-	// // // STEP 4: Initialize the flame chart using new WebInspector.CPUProfileFlameChart(dataProvider)
-	// // var flameChart = new WebInspector.CPUProfileFlameChart(dataProvider);
-
-	// // STEP 4: Add the chart to the DOM (??)
-	
-	</script>
+	</head>
+	<body class="undocked" id="-blink-dev-tools"></body>
+	</html>
 	
 </body>
 </html>

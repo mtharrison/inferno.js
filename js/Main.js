@@ -828,21 +828,18 @@ function loadXHR(url, async, callback) {
 var _importedScripts = {};
 
 function importScript(scriptName) {
-
-    console.log("Trying to load script: " + scriptName);
-
-    // if (_importedScripts[scriptName])
-    //     return;
-    // var xhr = new XMLHttpRequest();
-    // _importedScripts[scriptName] = true;
-    // xhr.open("GET", scriptName, false);
-    // xhr.send(null);
-    // if (!xhr.responseText)
-    //     throw "empty response arrived for script '" + scriptName + "'";
-    // var baseUrl = location.origin + location.pathname;
-    // baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf("/"));
-    // var sourceURL = baseUrl + "/" + scriptName;
-    // self.eval(xhr.responseText + "\n//# sourceURL=" + sourceURL);
+    if (_importedScripts[scriptName])
+        return;
+    var xhr = new XMLHttpRequest();
+    _importedScripts[scriptName] = true;
+    xhr.open("GET", scriptName, false);
+    xhr.send(null);
+    if (!xhr.responseText)
+        throw "empty response arrived for script '" + scriptName + "'";
+    var baseUrl = location.origin + location.pathname;
+    baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf("/"));
+    var sourceURL = baseUrl + "/" + scriptName;
+    self.eval(xhr.responseText + "\n//# sourceURL=" + sourceURL);
 }
 var loadScript = importScript;
 
@@ -2590,7 +2587,7 @@ WebInspector.Main.prototype = {
                 console.error(error);
                 return;
             }
-            InspectorFrontendHost.inspectedURLChanged(result.value);
+//            InspectorFrontendHost.inspectedURLChanged(result.value);
         }
     },
     _loadCompletedForWorkers: function () {
@@ -6409,18 +6406,15 @@ WebInspector.View._buildSourceURL = function (cssFile) {
     return "\n/*# sourceURL=" + WebInspector.ParsedURL.completeURL(window.location.href, cssFile) + " */";
 }
 WebInspector.View.createStyleElement = function (cssFile) {
-
-    console.log("Trying to load CSS file: " + cssFile);
-
-    // var styleElement;
-    // var xhr = new XMLHttpRequest();
-    // xhr.open("GET", cssFile, false);
-    // xhr.send(null);
-    // styleElement = document.createElement("style");
-    // styleElement.type = "text/css";
-    // styleElement.textContent = xhr.responseText + WebInspector.View._buildSourceURL(cssFile);
-    // document.head.insertBefore(styleElement, document.head.firstChild);
-    // return styleElement;
+    var styleElement;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", cssFile, false);
+    xhr.send(null);
+    styleElement = document.createElement("style");
+    styleElement.type = "text/css";
+    styleElement.textContent = xhr.responseText + WebInspector.View._buildSourceURL(cssFile);
+    document.head.insertBefore(styleElement, document.head.firstChild);
+    return styleElement;
 }
 WebInspector.View.prototype = {
     markAsRoot: function () {
@@ -14540,7 +14534,7 @@ WebInspector.ResourceTreeModel.prototype = {
             return;
         }
         this.dispatchEventToListeners(WebInspector.ResourceTreeModel.EventTypes.WillLoadCachedResources);
-        this._inspectedPageURL = mainFramePayload.frame.url;
+        //this._inspectedPageURL = mainFramePayload.frame.url;
         this._addFramesRecursively(null, mainFramePayload);
         this._dispatchInspectedURLChanged();
         this.dispatchEventToListeners(WebInspector.ResourceTreeModel.EventTypes.CachedResourcesLoaded);
@@ -14734,20 +14728,20 @@ WebInspector.ResourceTreeModel.prototype = {
         return this.mainFrame ? this.mainFrame.resourceForURL(url) : null;
     },
     _addFramesRecursively: function (parentFrame, frameTreePayload) {
-        var framePayload = frameTreePayload.frame;
-        var frame = new WebInspector.ResourceTreeFrame(this, parentFrame, framePayload.id, framePayload);
-        this._addFrame(frame);
-        var frameResource = this._createResourceFromFramePayload(framePayload, framePayload.url, WebInspector.resourceTypes.Document, framePayload.mimeType);
-        if (frame.isMainFrame())
-            this._inspectedPageURL = frameResource.url;
-        frame.addResource(frameResource);
-        for (var i = 0; frameTreePayload.childFrames && i < frameTreePayload.childFrames.length; ++i)
-            this._addFramesRecursively(frame, frameTreePayload.childFrames[i]);
-        for (var i = 0; i < frameTreePayload.resources.length; ++i) {
-            var subresource = frameTreePayload.resources[i];
-            var resource = this._createResourceFromFramePayload(framePayload, subresource.url, WebInspector.resourceTypes[subresource.type], subresource.mimeType);
-            frame.addResource(resource);
-        }
+        // var framePayload = frameTreePayload.frame;
+        // var frame = new WebInspector.ResourceTreeFrame(this, parentFrame, framePayload.id, framePayload);
+        // this._addFrame(frame);
+        // var frameResource = this._createResourceFromFramePayload(framePayload, framePayload.url, WebInspector.resourceTypes.Document, framePayload.mimeType);
+        // if (frame.isMainFrame())
+        //     this._inspectedPageURL = frameResource.url;
+        // frame.addResource(frameResource);
+        // for (var i = 0; frameTreePayload.childFrames && i < frameTreePayload.childFrames.length; ++i)
+        //     this._addFramesRecursively(frame, frameTreePayload.childFrames[i]);
+        // for (var i = 0; i < frameTreePayload.resources.length; ++i) {
+        //     var subresource = frameTreePayload.resources[i];
+        //     var resource = this._createResourceFromFramePayload(framePayload, subresource.url, WebInspector.resourceTypes[subresource.type], subresource.mimeType);
+        //     frame.addResource(resource);
+        // }
     },
     _createResourceFromFramePayload: function (frame, url, type, mimeType) {
         return new WebInspector.Resource(null, url, frame.url, frame.id, frame.loaderId, type, mimeType);
@@ -24090,7 +24084,7 @@ WebInspector.ImageView.prototype = {
                 var resourceSize = this.resource.resourceSize;
             var imageProperties = [{
                 name: WebInspector.UIString("Dimensions"),
-                value: WebInspector.UIString("%d × %d", imagePreviewElement.naturalWidth, imagePreviewElement.naturalHeight)
+                value: WebInspector.UIString("%d Ã— %d", imagePreviewElement.naturalWidth, imagePreviewElement.naturalHeight)
             }, {
                 name: WebInspector.UIString("File size"),
                 value: Number.bytesToString(resourceSize)
@@ -24150,7 +24144,7 @@ WebInspector.ImageView.prototype = {
 }
 WebInspector.SplitView = function (isVertical, secondIsSidebar, settingName, defaultSidebarWidth, defaultSidebarHeight) {
     WebInspector.View.call(this);
-    //this.registerRequiredCSS("splitView.css");
+    this.registerRequiredCSS("splitView.css");
     this.element.classList.add("split-view");
     this._mainView = new WebInspector.VBox();
     this._mainView.makeLayoutBoundary();
@@ -32173,7 +32167,7 @@ WebInspector.HARWriter.prototype = {
         this._writeProgress = compositeProgress.createSubProgress();
         if (--this._pendingRequests) {
             this._requestsProgress = compositeProgress.createSubProgress();
-            this._requestsProgress.setTitle(WebInspector.UIString("Collecting content…"));
+            this._requestsProgress.setTitle(WebInspector.UIString("Collecting contentâ€¦"));
             this._requestsProgress.setTotalWork(this._pendingRequests);
         } else
             this._beginWrite();
@@ -32193,7 +32187,7 @@ WebInspector.HARWriter.prototype = {
         this._text = JSON.stringify({
             log: this._harLog
         }, null, jsonIndent);
-        this._writeProgress.setTitle(WebInspector.UIString("Writing file…"));
+        this._writeProgress.setTitle(WebInspector.UIString("Writing fileâ€¦"));
         this._writeProgress.setTotalWork(this._text.length);
         this._bytesWritten = 0;
         this._writeNextChunk(this._stream);
