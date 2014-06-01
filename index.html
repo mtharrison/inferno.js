@@ -4,7 +4,6 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		
 		<link rel="stylesheet" type="text/css" href="/inspector.css">
-
 		<link rel="stylesheet" type="text/css" href="/splitView.css">
 		<link rel="stylesheet" type="text/css" href="/filter.css">
 		<link rel="stylesheet" type="text/css" href="/textPrompt.css">
@@ -15,26 +14,29 @@
 		<link rel="stylesheet" type="text/css" href="/dataGrid.css">
 		<link rel="stylesheet" type="text/css" href="/custom.css">
 
-		<script type="text/javascript" src="/sampleData.js"></script>
 		<script type="text/javascript" src="/Main.js"></script>
 		<script type="text/javascript" src="/ConsolePanel.js"></script>
 		<script type="text/javascript" src="/ProfilesPanel.js"></script>
 		<script type="text/javascript" src="/SourcesPanel.js"></script>
+		<script type="text/javascript" src="/Inferno.js"></script>
 
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
 		</head>
 		<body>
 
 			<script>
 
-				setTimeout(function(){
+				$.getJSON('sampleData.json', function(data){
+					setTimeout(function(){
 
-					var type 	= new WebInspector.CPUProfileType();
-					var header 	= new WebInspector.CPUProfileHeader(type);
-					header.setProtocolProfile(data);
-					WebInspector.panels.profiles.showProfile(header)
+						var type 	= new WebInspector.CPUProfileType();
+						var header 	= new WebInspector.CPUProfileHeader(type);
+						header.setProtocolProfile(data);
+						WebInspector.panels.profiles.showProfile(header)
 
-				}, 1000);
+					}, 1000);
+				})
 				
 			</script>
 
