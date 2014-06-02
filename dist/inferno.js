@@ -7509,7 +7509,7 @@ if (!window.InspectorFrontendHost) {
             WebInspector.console.log("Clipboard is not enabled in hosted mode. Please inspect using chrome://inspect", WebInspector.ConsoleMessage.MessageLevel.Error, true);
         },
         openInNewTab: function (url) {
-            window.open(url, "_blank");
+            //window.open(url, "_blank");
         },
         save: function (url, content, forceSaveAs) {
             WebInspector.console.log("Saving files is not enabled in hosted mode. Please inspect using chrome://inspect", WebInspector.ConsoleMessage.MessageLevel.Error, true);

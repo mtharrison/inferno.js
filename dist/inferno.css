@@ -3091,12 +3091,9 @@ body {
     position: relative;
     height: 100%;
     width: 100%;
-    overflow: hidden;
-    font-family: Lucida Grande, sans-serif;
     font-size: 12px;
     margin: 0;
     tab-size: 4;
-    -webkit-user-select: none;
     color: #222;
 }
 
