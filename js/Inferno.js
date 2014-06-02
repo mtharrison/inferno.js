@@ -1,10 +1,18 @@
-var Inferno = function(data, id) {
-	setTimeout(function(){
+var Inferno = {
 
-		var type 	= new WebInspector.CPUProfileType();
-		var header 	= new WebInspector.CPUProfileHeader(type);
-		header.setProtocolProfile(data);
-		WebInspector.panels.profiles.showProfile(header)
+	Flame: function(data, id, options) {
 
-	}, 1000);
+		var inspector = new WebInspector.Main(id, options || {});
+		inspector._loaded();
+
+		setTimeout(function(){
+
+			var type 	= new WebInspector.CPUProfileType();
+			var header 	= new WebInspector.CPUProfileHeader(type);
+			header.setProtocolProfile(data);
+			WebInspector.panels.profiles.showProfile(header)
+
+		}, 1000);
+	}
+
 }

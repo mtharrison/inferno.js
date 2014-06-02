@@ -2517,7 +2517,11 @@ WebInspector.queryParam = function (name) {
 //         }
 //     })();
 // }
-WebInspector.Main = function () {
+WebInspector.Main = function (id, options) {
+
+    this.id = id;
+    this.options = options;
+
     var boundListener = windowLoaded.bind(this);
 
     function windowLoaded() {
@@ -2530,9 +2534,9 @@ WebInspector.Main.prototype = {
     _registerModules: function () {
         var configuration;
         if (!Capabilities.isMainFrontend) {
-            configuration = ["main", "sources", "timeline", "profiles", "console", "codemirror"];
+            configuration = ["profiles"];
         } else {
-            configuration = ["main", "elements", "network", "sources", "timeline", "profiles", "resources", "audits", "console", "codemirror", "extensions", "settings"];
+            configuration = ["profiles"];
             if (WebInspector.experimentsSettings.layersPanel.isEnabled())
                 configuration.push("layers");
         }
@@ -2548,7 +2552,7 @@ WebInspector.Main.prototype = {
             WebInspector.inspectorView.appendToRightToolbar(this._screencastController.statusBarItem());
     },
     _createRootView: function () {
-        var rootView = new WebInspector.RootView();
+        var rootView = new WebInspector.RootView(this.id, this.options);
         this._rootSplitView = new WebInspector.SplitView(false, true, WebInspector.dockController.canDock() ? "InspectorView.splitViewState" : "InspectorView.dummySplitViewState", 300, 300);
         this._rootSplitView.show(rootView.element);
         WebInspector.inspectorView.show(this._rootSplitView.sidebarElement());
@@ -2985,7 +2989,7 @@ WebInspector.Main.DebugReloadActionDelegate.prototype = {
         return true;
     }
 }
-new WebInspector.Main();
+
 window.DEBUG = true;
 WebInspector.__defineGetter__("inspectedPageURL", function () {
     return WebInspector.resourceTreeModel.inspectedPageURL();
@@ -10885,7 +10889,9 @@ WebInspector.InspectorView.DrawerToggleActionDelegate.prototype = {
         return false;
     }
 }
-WebInspector.RootView = function () {
+WebInspector.RootView = function (id, options) {
+    this.id = id || false;
+    this.options = options || {};
     WebInspector.VBox.call(this);
     this.markAsRoot();
     this.element.classList.add("root-view");
@@ -10896,7 +10902,7 @@ WebInspector.RootView = function () {
 WebInspector.RootView.prototype = {
     attachToBody: function () {
         this.doResize();
-        this.show(document.body);
+        this.show(document.getElementById(this.id));
     },
     _onScroll: function () {
         if (document.body.scrollTop !== 0)
