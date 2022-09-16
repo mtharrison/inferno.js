@@ -11,6 +11,8 @@
     "type": "git",
     "url": "git://github.com/mtharrison/inferno.js.git"
   },
+  
+  
   "keywords": [
     "chrome",
     "flame",
